@@ -1,5 +1,7 @@
 package com.ranjstore.billdesk;
 
+import static com.ranjstore.billdesk.Config.SecretKey;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -40,18 +42,26 @@ public class MainActivity extends AppCompatActivity {
     public void billdesk(){
 
 
+
+
         Toast.makeText(getApplicationContext(),"failed",Toast.LENGTH_LONG).show();
-          //  Checkout checkout = new Checkout();
+          Checkout checkout = new Checkout();
+
+
+           checkout.setKeyID(SecretKey);
 
             try {
 
                 JSONObject options = new JSONObject();
               //  Toast.makeText(getApplicationContext(),"Suscesd",Toast.LENGTH_LONG).show();
+
+                options.put("mercid",Config.merchantID);
                 options.put("name", "BillTest");
+               // options.put("orderdate","2020-08-17T15:19:00+0530");
                 options.put("description", "Reference No. #123456");
-                options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+                //options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
                 // options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
-                options.put("theme.color", "#3399cc");
+              //  options.put("theme.color", "#3399cc");
                 options.put("currency", "INR");
                 options.put("amount", "30000");//300 X 100
                 options.put("prefill.email", "pramod.kumar@gmail.com");
